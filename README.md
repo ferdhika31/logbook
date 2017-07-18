@@ -1,6 +1,10 @@
 # Base Larakuy
 Base application skeleton laravel 5.4 Admin LTE 2.4.0 Bootstrap3
 
+## With Packages
+* [Laravel-Gravatar](https://github.com/thomaswelton/laravel-gravatar) by [ThomasWelton](https://github.com/thomaswelton)
+* [Laravel-Breadrumbs](https://github.com/davejamesmiller/laravel-breadcrumbs) by [DaveJamesMiller](https://github.com/davejamesmiller)
+
 ## Admin LTE 2.4.0
 
 Admin LTE is a free to use Bootstrap admin template.
