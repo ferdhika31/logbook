@@ -19,16 +19,6 @@ class HomeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        // if (Auth::check()){
-        //     echo "User id : ".Auth::user()->id;
-        //     echo "<br>
-        //     <a href='".route('logout')."' onclick=\"event.preventDefault();document.getElementById('logout-form').submit();\">
-        //         Logout
-        //     </a>";
-        //     echo "<form id=\"logout-form\" action='".route('logout')."' method=\"POST\" style=\"display: none;\">
-        //     ".csrf_field()."
-        //     </form>";
-        // }
         $data['page_name'] = "Dashboard";
         $data['page_description'] = "Control panel";
 
@@ -39,6 +29,6 @@ class HomeController extends Controller{
         $data['page_name'] = "About";
         $data['page_description'] = "About panel";
 
-        return view('backend.dashboard', $data);
+        return view('backend.about', $data);
     }
 }

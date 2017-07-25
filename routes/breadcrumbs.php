@@ -7,6 +7,6 @@ Breadcrumbs::register('dashboard', function($breadcrumbs){
 
 // Home > About
 Breadcrumbs::register('about', function($breadcrumbs){
-    $breadcrumbs->parent('home');
-    $breadcrumbs->push('About', route('about'));
+    $breadcrumbs->parent('dashboard');
+    $breadcrumbs->push('About', route('backend::about'));
 });
