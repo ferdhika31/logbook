@@ -4,6 +4,7 @@ Base application skeleton laravel 5.4 Admin LTE 2.4.0 Bootstrap3
 ## With Packages
 * [Laravel-Gravatar](https://github.com/thomaswelton/laravel-gravatar) by [ThomasWelton](https://github.com/thomaswelton)
 * [Laravel-Breadrumbs](https://github.com/davejamesmiller/laravel-breadcrumbs) by [DaveJamesMiller](https://github.com/davejamesmiller)
+* [Laravel-Menu](https://github.com/lavary/laravel-menu) by [Lavary](https://github.com/lavary)
 
 ## Admin LTE 2.4.0
 

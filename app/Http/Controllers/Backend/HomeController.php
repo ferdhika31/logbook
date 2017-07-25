@@ -34,4 +34,11 @@ class HomeController extends Controller{
 
         return view('backend.dashboard', $data);
     }
+
+    public function about(){
+        $data['page_name'] = "About";
+        $data['page_description'] = "About panel";
+
+        return view('backend.dashboard', $data);
+    }
 }

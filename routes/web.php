@@ -29,4 +29,6 @@ $router->group([
     
     // Dashboard
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+    Route::get('/about', 'HomeController@about')->name('about');
+    Route::get('/about2', 'HomeController@about')->name('about2');
 });

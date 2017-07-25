@@ -176,10 +176,13 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+        App\Providers\MenuServiceProvider::class,
 
         // Thirdparty
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        Lavary\Menu\ServiceProvider::class,
     ],
 
     /*
@@ -231,6 +234,7 @@ return [
         
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Menu'       => Lavary\Menu\Facade::class,
     ],
 
 ];
