@@ -1,6 +1,8 @@
 # Base Larakuy
 Base application skeleton laravel 5.4 Admin LTE 2.4.0 Bootstrap3
 
+![larakuy-lte](https://user-images.githubusercontent.com/8111407/28573155-e1a1a824-7173-11e7-9370-f9b55616a52b.png)
+
 ## With Packages
 * [Laravel-Gravatar](https://github.com/thomaswelton/laravel-gravatar) by [ThomasWelton](https://github.com/thomaswelton)
 * [Laravel-Breadrumbs](https://github.com/davejamesmiller/laravel-breadcrumbs) by [DaveJamesMiller](https://github.com/davejamesmiller)
