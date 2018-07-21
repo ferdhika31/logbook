@@ -12,6 +12,15 @@
         <form role="form" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
             
+            <div class="form-group has-feedback{{ $errors->has('nim') ? ' has-error' : '' }}">
+                <input id="nim" type="text" class="form-control" name="nim" value="{{ old('nim') }}" placeholder="nim" required autofocus>
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                @if ($errors->has('nim'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('nim') }}</strong>
+                    </span>
+                @endif
+            </div>
             <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="full name" required autofocus>
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -22,11 +31,37 @@
                 @endif
             </div>
             <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
-                <input id="email" placeholder="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                <input id="email" placeholder="@polban.ac.id" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 @if ($errors->has('email'))
                     <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group has-feedback{{ $errors->has('prodi') ? ' has-error' : '' }}">
+                <select name="prodi" class="form-control">
+                    @foreach(\App\Models\Prodi::get() as $prodi)
+                    <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
+                    @endforeach
+                </select>
+                <span class="glyphicon glyphicon-home form-control-feedback"></span>
+                @if ($errors->has('prodi'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('prodi') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group has-feedback{{ $errors->has('perusahaan') ? ' has-error' : '' }}">
+                <select name="perusahaan" class="form-control">
+                    @foreach(\App\Models\Perusahaan::get() as $perusahaan)
+                    <option value="{{ $perusahaan->id }}">{{ $perusahaan->nama_perusahaan }}</option>
+                    @endforeach
+                </select>
+                <span class="glyphicon glyphicon-briefcase form-control-feedback"></span>
+                @if ($errors->has('perusahaan'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('perusahaan') }}</strong>
                     </span>
                 @endif
             </div>
