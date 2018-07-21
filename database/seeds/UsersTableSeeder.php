@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Models\Prodi;
+use App\Models\Perusahaan;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $prodi = Prodi::where('nama_prodi', '=', 'D4-Teknik Informatika')->firstOrFail();
+        $perusahaan = Perusahaan::where('nama_perusahaan', '=', 'PT. Gamatechno Indonesia')->firstOrFail();
 
         // list prodi
         $listUser = [ 
@@ -23,6 +25,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'ferdhika.yudira.tif415@polban.ac.id',
                 'password' => bcrypt('123456'),
                 'program_studi_id' => $prodi->id,
+                'perusahaan_id' => $perusahaan->id,
                 'created_at'	=> date('Y-m-d h:i:s'),
                 'updated_at'	=> date('Y-m-d h:i:s'),
             ],
@@ -32,6 +35,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'ujang.wahyu.tif415@polban.ac.id',
                 'password' => bcrypt('123456'),
                 'program_studi_id' => $prodi->id,
+                'perusahaan_id' => $perusahaan->id,
                 'created_at'	=> date('Y-m-d h:i:s'),
                 'updated_at'	=> date('Y-m-d h:i:s'),
             ]

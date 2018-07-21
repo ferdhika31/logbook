@@ -30,7 +30,14 @@ class User extends Authenticatable
     /**
      * Get the prodi that owns the user.
      */
-    public function Prodi(){
+    public function prodi(){
         return $this->belongsTo('App\Models\Prodi');
+    }
+
+    /**
+     * Get the perusahaan that owns the user.
+     */
+    public function perusahaan(){
+        return $this->belongsTo('App\Models\Perusahaan');
     }
 }
