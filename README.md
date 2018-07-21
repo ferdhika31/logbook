@@ -74,7 +74,7 @@ php artisan key:generate
 
 Configure your ```.env``` file and run :
 ```
-php artisan migrate
+php artisan migrate:refresh --seed
 ```
 
 **WARNING** : For auth support, configure your ```.env``` file with ```database``` and ```smtp``` connection !
