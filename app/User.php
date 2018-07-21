@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'nim', 'name', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get the prodi that owns the user.
+     */
+    public function Prodi(){
+        return $this->belongsTo('App\Models\Prodi');
+    }
 }
