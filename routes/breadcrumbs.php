@@ -40,3 +40,18 @@ Breadcrumbs::register('create_project', function($breadcrumbs){
     $breadcrumbs->parent('list_project');
     $breadcrumbs->push('Tambah Project', route('backend::project.index'));
 });
+
+// Logbook
+Breadcrumbs::register('list_logbook', function($breadcrumbs){
+    $breadcrumbs->push('Logbook', route('backend::logbook.index'));
+});
+
+Breadcrumbs::register('edit_logbook', function($breadcrumbs){
+    $breadcrumbs->parent('list_logbook');
+    $breadcrumbs->push('Ubah Logbook', route('backend::logbook.index'));
+});
+
+Breadcrumbs::register('create_logbook', function($breadcrumbs){
+    $breadcrumbs->parent('list_logbook');
+    $breadcrumbs->push('Tambah Logbook', route('backend::logbook.index'));
+});

@@ -60,6 +60,21 @@ $router->group([
             Route::delete('/{id}/delete', 'ProjectController@destroy')->name('destroy');
     });
 
+    // Project
+    $router->group([
+        'prefix'     => 'logbook', 
+        'as'         => 'logbook.',
+        // 'middleware' => ['role:superadmin']
+        ], function ($router) {
+            Route::get('/', 'LogbookController@index')->name('index');
+            Route::get('/create', 'LogbookController@create')->name('create');
+            Route::post('/create', 'LogbookController@store')->name('store');
+            Route::get('/{id}', 'LogbookController@show')->name('show');
+            Route::get('/{id}/edit', 'LogbookController@edit')->name('edit');
+            Route::patch('/{id}/edit', 'LogbookController@update')->name('update');
+            Route::delete('/{id}/delete', 'LogbookController@destroy')->name('destroy');
+    });
+
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/about2', 'HomeController@about')->name('about2');
 });

@@ -10,6 +10,14 @@ class Periode extends Model
     use SoftDeletes;
 
     protected $table = 'periode';
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+    
     protected $fillable = [
         'no',
         'tanggal_awal_periode',

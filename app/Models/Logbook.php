@@ -10,6 +10,14 @@ class Logbook extends Model
     use SoftDeletes;
 
     protected $table = 'logbook';
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'subno',
         'tanggal',
@@ -20,13 +28,12 @@ class Logbook extends Model
         'keterangan'
     ];
 
-    public function periode()
-    {
-        return $this->belongsTo('App/Models/Periode');
+    public function periode(){
+        return $this->belongsTo('App\Models\Periode');
     }
 
     public function project()
     {
-        return $this->hasOne('App/Models/Periode');
+        return $this->belongsTo('App\Models\Project');
     }
 }

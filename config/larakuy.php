@@ -10,4 +10,7 @@ return [
     */
     'prefix_admin' => 'backend',
     'footer'        => 'Copyright &copy; '.date('Y').' Larakuy',
+    'hari'  => [
+        'Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'
+    ],
 ];
