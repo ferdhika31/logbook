@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Flight extends Model
+class Logbook extends Model
 {
+    use SoftDeletes;
+    
     protected $table = 'logbook';
     protected $fillable = [
         'subno',
