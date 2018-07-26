@@ -24,11 +24,16 @@ class MenuServiceProvider extends ServiceProvider
                 ->data('id', 'larakuy-dashboard');   
 
             $menuMulti = $this->app['larakuy.backend.menu']
-                ->add(trans('Multilevel'))
-                ->data('icon', 'fa-link')
-                ->data('id', 'larakuy-multi');    
-            $menuMulti->add(trans('About'), url('backend/about'))->data('icon', 'fa-circle');
-            $menuMulti->add(trans('About2'), url('backend/about2'))->data('icon', 'fa-circle');
+                ->add(trans('Master'))
+                ->data('icon', 'fa-database')
+                ->data('id', 'larakuy-master');    
+            $menuMulti->add(trans('Periode'), url('backend/periode'))->data('icon', 'fa-circle');
+            $menuMulti->add(trans('Project'), url('backend/project'))->data('icon', 'fa-circle');
+
+            $menuLogbook = $this->app['larakuy.backend.menu']
+                ->add(trans('Logbook'), url('backend/logbook'))
+                ->data('icon', 'fa-book')
+                ->data('id', 'larakuy-logbook');  
         }
 
     }
