@@ -42,7 +42,11 @@ class Perusahaan extends Model{
      */
     public function user()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany('App\User');
+    }
+
+    public function project(){
+        return $this->belongsTo('App\Models\Project');
     }
 
 }

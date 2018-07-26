@@ -25,3 +25,18 @@ Breadcrumbs::register('create_periode', function($breadcrumbs){
     $breadcrumbs->parent('list_periode');
     $breadcrumbs->push('Tambah Periode', route('backend::periode.index'));
 });
+
+// Project
+Breadcrumbs::register('list_project', function($breadcrumbs){
+    $breadcrumbs->push('Project', route('backend::project.index'));
+});
+
+Breadcrumbs::register('edit_project', function($breadcrumbs){
+    $breadcrumbs->parent('list_project');
+    $breadcrumbs->push('Ubah Project', route('backend::project.index'));
+});
+
+Breadcrumbs::register('create_project', function($breadcrumbs){
+    $breadcrumbs->parent('list_project');
+    $breadcrumbs->push('Tambah Project', route('backend::project.index'));
+});

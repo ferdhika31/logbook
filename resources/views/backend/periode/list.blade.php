@@ -88,7 +88,7 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-12">
-						Apakah benar data {{$res->nama_kategori}} akan di hapus?
+						Apakah benar data {{$res->tanggal_awal_periode}} s/d {{$res->tanggal_akhir_periode}} akan di hapus?
 					</div>
 				</div>
 			</div>

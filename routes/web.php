@@ -45,6 +45,20 @@ $router->group([
             Route::delete('/{id}/delete', 'PeriodeController@destroy')->name('destroy');
     });
 
+    // Project
+    $router->group([
+        'prefix'     => 'project', 
+        'as'         => 'project.',
+        // 'middleware' => ['role:superadmin']
+        ], function ($router) {
+            Route::get('/', 'ProjectController@index')->name('index');
+            Route::get('/create', 'ProjectController@create')->name('create');
+            Route::post('/create', 'ProjectController@store')->name('store');
+            Route::get('/{id}', 'ProjectController@show')->name('show');
+            Route::get('/{id}/edit', 'ProjectController@edit')->name('edit');
+            Route::patch('/{id}/edit', 'ProjectController@update')->name('update');
+            Route::delete('/{id}/delete', 'ProjectController@destroy')->name('destroy');
+    });
 
     Route::get('/about', 'HomeController@about')->name('about');
     Route::get('/about2', 'HomeController@about')->name('about2');

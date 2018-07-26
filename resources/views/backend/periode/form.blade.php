@@ -3,7 +3,7 @@
 <div class="form-group">
     <label for="iNamaKategori" class="col-sm-2 control-label">No Periode</label>
     <div class="col-sm-10">
-        <input type="number" name="no" class="form-control" value="{{ (!empty($data->no))? $data->no : $last->no+1 }}" id="iNamaKategori" placeholder="">
+        <input type="number" name="no" class="form-control" value="{{ (!empty($data->no))? $data->no : (!empty($last->no)) ? $last->no+1 : 1 }}" placeholder="">
     </div>
 </div>
 
