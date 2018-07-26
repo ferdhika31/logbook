@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Logbook extends Model
 {
     use SoftDeletes;
-    
+
     protected $table = 'logbook';
     protected $fillable = [
         'subno',

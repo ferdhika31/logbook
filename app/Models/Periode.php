@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Periode extends Model
 {
     use SoftDeletes;
-    
+
     protected $table = 'periode';
     protected $fillable = [
         'no',
@@ -16,13 +16,13 @@ class Periode extends Model
         'tanggal_akhir_periode'
     ];
     
-    public function mahasiswa()
+    public function user()
     {
-        return $this->belongsTo('App/Models/Mahasiswa');
+        return $this->belongsTo('App\User');
     }
 
     public function logbook()
     {
-        return $this->hasMany('App/Models/Logbook');
+        return $this->hasMany('App\Models\Logbook');
     }
 }

@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function perusahaan(){
         return $this->belongsTo('App\Models\Perusahaan');
     }
+
+    public function periode(){
+        return $this->hasMany('App\Models\Periode');
+    }
 }
