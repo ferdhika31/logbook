@@ -34,10 +34,12 @@ class LogbookController extends Controller{
 
         $user = User::findOrFail(Auth::user()->id);
         
-        $model = Logbook::join('periode', 'logbook.periode_id', '=', 'periode.id')->
+        $model = Logbook::
         with(['periode' => function($query) use ($user) {
-            $query->where('user_id', $user->id);
-        }])->orderBy('no', 'asc')->orderBy('subno', 'asc')->paginate(10);
+            $query->where('user_id', $user->id)->orderBy('no', 'asc');
+        }])->orderBy('subno', 'asc')->paginate(10);
+
+        // dd($model);
 
         $data['data'] = $model;
 
@@ -106,5 +108,98 @@ class LogbookController extends Controller{
         $logbook->save();
 
         return redirect()->route($this->routePath. ".index")->with('success', "Data berhasil di simpan.");
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id){
+        $user = User::findOrFail(Auth::user()->id);
+
+        $data = Logbook::join('periode', 'logbook.periode_id', '=', 'periode.id')->
+        with(['periode' => function($query) use ($user) {
+            $query->where('user_id', $user->id);
+        }])->findOrFail($id);
+
+        $parse['periode'] = Periode::where('user_id', Auth::user()->id)->orderBy('no', 'asc')->get();
+        $parse['project'] = Project::whereHas('perusahaan', function($query) use ($user) {
+            $query->where('perusahaan_id', $user->perusahaan_id);
+        })->orderBy('created_at', 'asc')->get();
+
+        $parse['page_name'] = "Ubah Project";
+        $parse['page_description'] = "Ubah project";
+        $parse['data'] = $data;
+
+        return view($this->prefix.'.edit', $parse);
+    }
+
+    /**
+     * Update the specified resource.
+     *
+     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, Request $request){
+        // validasi form
+        $this->validate($request, [
+            'periode'   => 'required',
+            'tgl'       => 'required',
+            'project'   => 'required',
+            'tugas'     => 'required',
+            'kegiatan'  => 'required',
+            'tools'     => 'required',
+            'hasil'     => 'required',
+            'keterangan'=> 'required',
+            'subno'     => 'required|integer'
+        ]);
+
+        // cari data
+        $user = User::findOrFail(Auth::user()->id);
+
+        $periode = Periode::where('user_id', Auth::user()->id)->findOrFail($request->periode);
+        $project = Project::whereHas('perusahaan', function($query) use ($user) {
+            $query->where('perusahaan_id', $user->perusahaan_id);
+        })->findOrFail($request->project);
+
+        $logbook = Logbook::join('periode', 'logbook.periode_id', '=', 'periode.id')->
+        with(['periode' => function($query) use ($user) {
+            $query->where('user_id', $user->id);
+        }])->findOrFail($id);
+
+        $logbook->subno = $request->subno;
+        $logbook->tanggal = $request->tgl;
+        $logbook->tugas = $request->tugas;
+        $logbook->kegiatan_harian = $request->kegiatan;
+        $logbook->tools = $request->tools;
+        $logbook->hasil_kerja = $request->hasil;
+        $logbook->keterangan = $request->keterangan;
+        $logbook->periode()->associate($periode);
+        $logbook->project()->associate($project);
+
+        $logbook->save();
+
+        return redirect()->route($this->routePath. ".index")->with('success', "Data berhasil di ubah.");
+    }
+
+    /**
+     * Delete the specified resource.
+     *
+     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id, Request $request){
+        $data = Logbook::withTrashed()->findOrFail($id);
+        if(!empty($data->deleted_at)){
+            $data->forceDelete();
+        }else{
+            $data->delete();
+        }        
+
+        return redirect()->route($this->routePath. ".index")->with('success', "Data berhasil di hapus.");
     }
 }

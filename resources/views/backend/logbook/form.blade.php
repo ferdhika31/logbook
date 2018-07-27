@@ -5,11 +5,20 @@
     <div class="col-sm-10">
         <select name="periode" class="form-control">
         @foreach($periode as $p)
-        <option value="{{ $p->id }}">{{ $p->no }}. {{ $p->tanggal_awal_periode }} s/d {{ $p->tanggal_akhir_periode }}</option>
+        <option value="{{ $p->id }}"{{ (!empty($data->periode_id)) ? ($data->periode_id==$p->id) ? ' selected' : '' : '' }}>{{ $p->no }}. {{ $p->tanggal_awal_periode }} s/d {{ $p->tanggal_akhir_periode }}</option>
         @endforeach
         </select>
     </div>
 </div>
+
+@if((!empty($data)))
+<div class="form-group">
+    <label class="col-sm-2 control-label">Sub No</label>
+    <div class="col-sm-10">
+    <input type="number" name="subno" value="{{ (!empty($data->subno))? $data->subno : 1 }}" class="form-control">
+    </div>
+</div>
+@endif
 
 <div class="form-group">
     <label class="col-sm-2 control-label">Project</label>

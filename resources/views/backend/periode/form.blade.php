@@ -3,7 +3,17 @@
 <div class="form-group">
     <label for="iNamaKategori" class="col-sm-2 control-label">No Periode</label>
     <div class="col-sm-10">
-        <input type="number" name="no" class="form-control" value="{{ (!empty($data->no))? $data->no : (!empty($last->no)) ? $last->no+1 : 1 }}" placeholder="">
+        @php
+        $no = 1;
+        if((!empty($data->no))){
+            $no = $data->no;
+        }else{
+            if((!empty($last->no))){
+                $no = $last->no+1;
+            }
+        }
+        @endphp
+        <input type="number" name="no" class="form-control" value="{{ $no }}" placeholder="">
     </div>
 </div>
 
