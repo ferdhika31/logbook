@@ -35,7 +35,7 @@
         <br>
         <table border="1" width="100%">
             <tr>
-                <td>No. : {{ $logbook->periode->no }}</td>
+                <td width="25%">No. : {{ $logbook->periode->no }}</td>
                 <td>Periode : {{ $pAwal[2].' '.ucwords(config('larakuy.bulan')[$pAwal[1]]) }} - {{ $pAkhir[2].' '.ucwords(config('larakuy.bulan')[$pAkhir[1]]) }} {{ $pAwal[0] }}</td>
             </tr>
             <tr>
