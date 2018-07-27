@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 use App\User;
 use App\Models\Logbook;
@@ -190,6 +191,32 @@ class LogbookController extends Controller{
         $logbook->save();
 
         return redirect()->route($this->routePath. ".index")->with('success', "Data berhasil di ubah.");
+    }
+
+    /**
+     * Export a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function export(Request $request){
+        $user = User::findOrFail(Auth::user()->id);
+
+        $periode = Periode::findOrFail($request->periode);
+    
+        $model = Logbook::where('periode_id', $request->periode)->
+        with(['periode' => function($query) use ($user) {
+            $query->where('user_id', $user->id)->orderBy('no', 'asc');
+        }])->orderBy('subno', 'asc')->get();
+
+        $fileName = $periode->no.".LogbookPeriode".str_replace('-','', $periode->tanggal_awal_periode).'-'.str_replace('-','', $periode->tanggal_akhir_periode);
+
+        $data['periode'] = $periode;
+        $data['logbook'] = $model;
+
+        $pdf = PDF::loadView($this->prefix. ".template", $data);
+
+        return $pdf->download($fileName.'.pdf');
     }
 
     /**

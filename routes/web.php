@@ -73,6 +73,8 @@ $router->group([
             Route::get('/{id}/edit', 'LogbookController@edit')->name('edit');
             Route::patch('/{id}/edit', 'LogbookController@update')->name('update');
             Route::delete('/{id}/delete', 'LogbookController@destroy')->name('destroy');
+            Route::post('/export', 'LogbookController@export')->name('export');
+            Route::post('/{id}/export', 'LogbookController@exportOne')->name('exportOne');
     });
 
     Route::get('/about', 'HomeController@about')->name('about');

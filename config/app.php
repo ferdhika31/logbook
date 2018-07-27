@@ -184,6 +184,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Chumper\Zipper\ZipperServiceProvider::class,
     ],
 
     /*
@@ -237,6 +238,7 @@ return [
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Menu'       => Lavary\Menu\Facade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Zipper' => Chumper\Zipper\Zipper::class
     ],
 
 ];

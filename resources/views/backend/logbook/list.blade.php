@@ -29,7 +29,9 @@
 			</form>
             @if(!empty(\Request::get('periode')))
             <br>
-            <form class="form-inline" action="" method="POST">
+            <form class="form-inline" action="{{ route('backend::logbook.export') }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" value="{{ \Request::get('periode') }}" name="periode" />
                 <input type="submit" class="btn btn-success" value="Export satu periode ke PDF" />
             </form>
             @endif
