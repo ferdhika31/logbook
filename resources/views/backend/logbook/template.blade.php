@@ -17,7 +17,7 @@
     <body>
         @php
         $pAwal = explode('-', $periode->tanggal_awal_periode);
-        $pAkhir = explode('-', $periode->tanggal_awal_periode);
+        $pAkhir = explode('-', $periode->tanggal_akhir_periode);
         @endphp
         <h3 style="font-weight:bold; font-style: italic;">Log Book Periode {{ $pAwal[2].' '.ucwords(config('larakuy.bulan')[$pAwal[1]]) }} - {{ $pAkhir[2].' '.ucwords(config('larakuy.bulan')[$pAkhir[1]]) }} {{ $pAwal[0] }} (Per 2 Minggu )</h3>
         <center><h1 style="font-weight:bold;">Log Book PKL</h1></center>
