@@ -85,8 +85,8 @@
     <script>
     tinymce.init({ 
         selector:'textarea',
-        plugins: 'image code pagebreak wordcount table link media searchreplace preview paste',
-        toolbar1: "image code pagebreak wordcount table link media searchreplace preview paste",
+        plugins: 'image code pagebreak wordcount table link media searchreplace preview paste lists',
+        toolbar1: "image code pagebreak wordcount table link media searchreplace preview paste lists",
         toolbar2: "undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify fontselect fontsizeselect | bullist numlist | forecolor backcolor | charmap nonbreaking",
 
         contextmenu: "cut copy paste",

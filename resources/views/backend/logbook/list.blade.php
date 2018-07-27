@@ -27,6 +27,12 @@
                 </select>
                 <input id="sbmt" type="submit" class="btn btn-success" value="Filter" style="margin-left: 0.2in;">
 			</form>
+            @if(!empty(\Request::get('periode')))
+            <br>
+            <form class="form-inline" action="" method="POST">
+                <input type="submit" class="btn btn-success" value="Export satu periode ke PDF" />
+            </form>
+            @endif
         </div>
         
         <div class="box" style="margin-top: 5px;">
