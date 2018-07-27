@@ -76,6 +76,9 @@
                             <button class="btn btn-danger btn-xs" title="Hapus" onclick="deleteData('{{ substr($res->id,0,5) }}')"> Hapus
                                 <i class="glyphicon glyphicon-trash"></i>
                             </button>
+                            <button class="btn btn-info btn-xs" title="Export" onclick="exportData('{{ substr($res->id,0,5) }}')"> Export
+                                <i class="glyphicon glyphicon-download"></i>
+                            </button>
                         </td>
                     </tr>
                     <?php $no++;?>
@@ -100,6 +103,11 @@
     function deleteData(id){
         console.log(id);
 		$('#mdlHapus'+id).modal('show'); // show bootstrap modal
+	}
+
+    function exportData(id){
+        console.log(id);
+		$('#mdlExport'+id).modal('show'); // show bootstrap modal
 	}
 </script>
 
@@ -128,6 +136,35 @@
                     <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
 
                     <input type="submit" class="btn btn-sm btn-danger" value="Hapus">
+                </form>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+
+<div id="mdlExport{{substr($res->id, 0, 5)}}" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="smaller lighter blue no-margin">Konfirmasi</h3>
+			</div>
+
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						Export data ?
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+                <form method="POST" action="{{ route('backend::logbook.exportOne', ['id'=>$res->id]) }}" accept-charset="UTF-8">
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Cancel</button>
+
+                    <input type="submit" class="btn btn-sm btn-info" value="Export">
                 </form>
 			</div>
 		</div><!-- /.modal-content -->

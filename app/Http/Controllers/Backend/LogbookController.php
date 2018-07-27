@@ -220,6 +220,32 @@ class LogbookController extends Controller{
     }
 
     /**
+     * Export a newly created resource in storage.
+     *
+     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exportOne($id, Request $request){
+        $user = User::findOrFail(Auth::user()->id);
+
+        $model = Logbook::with(['periode' => function($query) use ($user) {
+            $query->where('user_id', $user->id);
+        }])->findOrFail($id);
+
+        $tgl = explode('-', $model->tanggal);
+
+        $fileName = $model->periode->no.".".$model->subno.".Logbook".config('larakuy.hari')[\Carbon\Carbon::createFromFormat('Y-m-d', $model->tanggal, 'Asia/Jakarta')->dayOfWeek]."_".$tgl[2].' '.ucwords(config('larakuy.bulan')[$tgl[1]]).' '.$tgl[0];
+
+        $data['periode'] = $model->periode;
+        $data['logbook'] = $model;
+
+        $pdf = PDF::loadView($this->prefix. ".templateOne", $data);
+
+        return $pdf->download($fileName.'.pdf');
+    }
+
+    /**
      * Delete the specified resource.
      *
      * @param  int $id
