@@ -5,5 +5,5 @@
                 
             </div>
             <!-- Default to the left -->
-            <strong>{{ config('larakuy.footer', 'Copyright &copy; 2017 <a href="#">Larakuy</a>') }}.</strong> All rights reserved.
+            <strong>{{ config('larakuy.footer', 'Copyright &copy; 2018 <a href="#">JTK 2015</a>') }}.</strong> All rights reserved.
         </footer>

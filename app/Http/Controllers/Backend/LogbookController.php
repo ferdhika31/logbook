@@ -34,12 +34,20 @@ class LogbookController extends Controller{
 
         $user = User::findOrFail(Auth::user()->id);
         
-        $model = Logbook::
-        with(['periode' => function($query) use ($user) {
-            $query->where('user_id', $user->id)->orderBy('no', 'asc');
-        }])->orderBy('subno', 'asc')->paginate(10);
+        if(!empty($request->periode)){
+            $model = Logbook::where('periode_id', $request->periode)->
+            with(['periode' => function($query) use ($user) {
+                $query->where('user_id', $user->id)->orderBy('no', 'asc');
+            }])->orderBy('subno', 'asc')->paginate(10);
+        }else{
+            $model = Logbook::
+            with(['periode' => function($query) use ($user) {
+                $query->where('user_id', $user->id)->orderBy('no', 'asc');
+            }])->orderBy('subno', 'asc')->paginate(10);
+        }
 
         // dd($model);
+        $data['periode'] = Periode::where('user_id', Auth::user()->id)->orderBy('no', 'asc')->get();
 
         $data['data'] = $model;
 
@@ -119,8 +127,7 @@ class LogbookController extends Controller{
     public function edit($id){
         $user = User::findOrFail(Auth::user()->id);
 
-        $data = Logbook::join('periode', 'logbook.periode_id', '=', 'periode.id')->
-        with(['periode' => function($query) use ($user) {
+        $data = Logbook::with(['periode' => function($query) use ($user) {
             $query->where('user_id', $user->id);
         }])->findOrFail($id);
 
@@ -165,11 +172,11 @@ class LogbookController extends Controller{
             $query->where('perusahaan_id', $user->perusahaan_id);
         })->findOrFail($request->project);
 
-        $logbook = Logbook::join('periode', 'logbook.periode_id', '=', 'periode.id')->
+        $logbook = Logbook::
         with(['periode' => function($query) use ($user) {
             $query->where('user_id', $user->id);
         }])->findOrFail($id);
-
+        
         $logbook->subno = $request->subno;
         $logbook->tanggal = $request->tgl;
         $logbook->tugas = $request->tugas;

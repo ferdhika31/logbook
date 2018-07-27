@@ -16,6 +16,18 @@
         <a class="btn btn-primary btn-md" href="{{ route('backend::logbook.create') }}">
 			<i class="fa fa-plus"></i> Tambah
 		</a>
+
+        <div id="filter" style="margin-top: 0.1in;">
+            <!-- <a href="">Semua</a> |  -->
+            <form class="form-inline" action="{{ route('backend::logbook.index') }}" method="GET">
+                <select name="periode" class="form-control">
+                @foreach($periode as $per)
+                    <option value="{{ $per->id }}"{{ (!empty(\Request::get('periode'))) ? (\Request::get('periode')==$per->id) ? ' selected' : '' : '' }}>{{ $per->no }}. {{ $per->tanggal_awal_periode }} s/d {{ $per->tanggal_akhir_periode }}</option>
+                @endforeach
+                </select>
+                <input id="sbmt" type="submit" class="btn btn-success" value="Filter" style="margin-left: 0.2in;">
+			</form>
+        </div>
         
         <div class="box" style="margin-top: 5px;">
             <div class="box-header with-border">

@@ -31,6 +31,11 @@ class Periode extends Model
 
     public function logbook()
     {
-        return $this->hasMany('App\Models\Logbook');
+        return $this->hasOne('App\Models\Logbook');
+    }
+
+    public function project()
+    {
+        return $this->hasOne('App\Models\Project');
     }
 }
