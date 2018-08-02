@@ -49,9 +49,9 @@
                             <a class="btn btn-default btn-xs" title="Ubah" href="{{ route('backend::project.edit', ['id' => $res->id]) }}"> Ubah
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <button class="btn btn-danger btn-xs" title="Hapus" onclick="deleteData('{{ substr($res->id,0,5) }}')"> Hapus
+                            <!-- <button class="btn btn-danger btn-xs" title="Hapus" onclick="deleteData('{{ substr($res->id,0,5) }}')"> Hapus
                                 <i class="glyphicon glyphicon-trash"></i>
-                            </button>
+                            </button> -->
                         </td>
                     </tr>
                     <?php $no++;?>
