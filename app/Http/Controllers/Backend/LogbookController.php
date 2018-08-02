@@ -37,17 +37,16 @@ class LogbookController extends Controller{
         
         if(!empty($request->periode)){
             $model = Logbook::where('periode_id', $request->periode)->
-            with(['periode' => function($query) use ($user) {
+            whereHas('periode', function($query) use ($user) {
                 $query->where('user_id', $user->id)->orderBy('no', 'asc');
-            }])->orderBy('subno', 'asc')->paginate(10);
+            })->orderBy('subno', 'asc')->paginate(10);
         }else{
             $model = Logbook::
-            with(['periode' => function($query) use ($user) {
+            whereHas('periode', function($query) use ($user) {
                 $query->where('user_id', $user->id)->orderBy('no', 'asc');
-            }])->orderBy('subno', 'asc')->paginate(10);
+            })->orderBy('subno', 'asc')->paginate(10);
         }
 
-        // dd($model);
         $data['periode'] = Periode::where('user_id', Auth::user()->id)->orderBy('no', 'asc')->get();
 
         $data['data'] = $model;
