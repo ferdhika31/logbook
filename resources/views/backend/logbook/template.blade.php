@@ -34,7 +34,7 @@
         </table>
         <br>
 
-        @foreach($logbook as $res)
+        @forelse($logbook as $res)
         <table border="1" width="100%">
             <tr>
                 <td width="25%">No. : {{ $res->periode->no }}</td>
@@ -81,7 +81,7 @@
         </table>
             @if(!$loop->last)
             <div class="page-break"></div>
-            @endif
-        @endforeach
+            @endif  
+        @endforelse
     </body>
 </html>

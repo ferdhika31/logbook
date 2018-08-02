@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
+use Cloudder;
 
 use App\User;
 use App\Models\Logbook;
@@ -261,4 +262,35 @@ class LogbookController extends Controller{
 
         return redirect()->route($this->routePath. ".index")->with('success', "Data berhasil di hapus.");
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request){
+        // upload image
+        $image = $request->file('file');
+        if(!empty($image)){
+            $d = Cloudder::upload($image->getPathName(), null, array(
+                "folder" => "Logbook",
+                "use_filename" => TRUE, 
+                "unique_filename" => FALSE
+            ));
+    
+            $json = [
+                'status' => true,
+                'data'  => $d->getResult()['url']
+            ];
+        }else{
+            $json = [
+                'status' => false,
+                'data'  => null
+            ];
+        }
+
+        return json_encode($json);
+    }
+
 }

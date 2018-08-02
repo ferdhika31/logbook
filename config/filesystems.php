@@ -65,4 +65,18 @@ return [
 
     ],
 
+    'ftp' => [
+        'driver'   => 'ftp',
+        'host'     => 'files.000webhost.com',
+        'username' => 'rpl4rt08',
+        'password' => 'bandung0',
+    
+        // Optional FTP Settings...
+        'port'     => 21,
+        // 'root'     => '',
+        // 'passive'  => true,
+        // 'ssl'      => true,
+        // 'timeout'  => 30,
+    ],
+
 ];

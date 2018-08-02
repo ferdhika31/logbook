@@ -75,6 +75,8 @@ $router->group([
             Route::delete('/{id}/delete', 'LogbookController@destroy')->name('destroy');
             Route::post('/export', 'LogbookController@export')->name('export');
             Route::post('/{id}/export', 'LogbookController@exportOne')->name('exportOne');
+            Route::post('/upload', 'LogbookController@upload')->name('upload');
+
     });
 
     Route::get('/about', 'HomeController@about')->name('about');

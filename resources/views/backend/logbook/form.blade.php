@@ -107,11 +107,16 @@
                 }
                 json = JSON.parse(xhr.responseText);
 
-                if (!json || typeof json.location != 'string') {
+                if (!json || typeof json.data != 'string') {
                     failure('Invalid JSON: ' + xhr.responseText);
                     return;
                 }
-                success(json.location);
+                console.log(json);
+                if(json.status){
+                    success(json.data); 
+                }else{
+                    failure('Foto belum ke unggah..');
+                }
             };
             formData = new FormData();
             formData.append('file', blobInfo.blob(), blobInfo.filename());

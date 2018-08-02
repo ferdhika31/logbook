@@ -185,6 +185,7 @@ return [
         Lavary\Menu\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
+        JD\Cloudder\CloudderServiceProvider::class,
     ],
 
     /*
@@ -238,7 +239,8 @@ return [
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'Menu'       => Lavary\Menu\Facade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Zipper' => Chumper\Zipper\Zipper::class
+        'Zipper' => Chumper\Zipper\Zipper::class,
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
     ],
 
 ];
