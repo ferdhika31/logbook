@@ -8,8 +8,16 @@
         }
         table, tr, td {
             border: 1px solid black;
-            padding:2px;
         }
+        table img{
+            width: 100%;
+            height: auto;
+        }
+
+        table th{
+            width: 200px;
+        }
+
         .page-break {
             page-break-after: always;
         }
@@ -24,10 +32,10 @@
 
         <table width="100%">
             <tr>
-                <td>JURUSAN</td>
+                <th>JURUSAN</th>
                 <td>:</td>
                 <td>TEKNIK KOMPUTER DAN INFORMATIKA</td>
-                <td>PROGRAM STUDI</td>
+                <th>PROGRAM STUDI</th>
                 <td>:</td>
                 <td>D4 TEKNIK INFORMATIKA</td>
             </tr>
@@ -35,7 +43,7 @@
         <br>
         <table border="1" width="100%">
             <tr>
-                <td width="25%">No. : {{ $logbook->periode->no }}</td>
+                <th>No. : {{ $logbook->periode->no }}</th>
                 <td>Periode : {{ $pAwal[2].' '.ucwords(config('larakuy.bulan')[$pAwal[1]]) }} - {{ $pAkhir[2].' '.ucwords(config('larakuy.bulan')[$pAkhir[1]]) }} {{ $pAwal[0] }}</td>
             </tr>
             <tr>
@@ -43,11 +51,11 @@
                 $tanggal = $logbook->tanggal;
                 $tgl = explode('-', $tanggal);
                 @endphp
-                <td>Sub No. : {{ $logbook->periode->no }}.{{ $logbook->subno }}</td>
+                <th>Sub No. : {{ $logbook->periode->no }}.{{ $logbook->subno }}</th>
                 <td>Hari/ Tanggal : {{ config('larakuy.hari')[\Carbon\Carbon::createFromFormat('Y-m-d', $logbook->tanggal, 'Asia/Jakarta')->dayOfWeek] }}, {{ $tgl[2].' '.ucwords(config('larakuy.bulan')[$tgl[1]]).' '.$tgl[0] }}</td>
             </tr>
             <tr>
-                <td rowspan="3">Proyek</td>
+                <th rowspan="3">Proyek</th>
                 <td>{{ $logbook->project->nama_project }}</td>
             </tr>
             <tr>
@@ -57,23 +65,23 @@
                 <td>Technical Leader : {{ $logbook->project->technical_leader }}</td>
             </tr>
             <tr>
-                <td>Tugas</td>
+                <th>Tugas</th>
                 <td valign="top">{!! $logbook->tugas !!}</td>
             </tr>
             <tr>
-                <td>Waktu dan Kegiatan Harian</td>
+                <th>Waktu dan Kegiatan Harian</th>
                 <td valign="top">{!! $logbook->kegiatan_harian !!}</td>
             </tr>
             <tr>
-                <td>Tools yang digunakan</td>
+                <th>Tools yang digunakan</th>
                 <td valign="top">{!! $logbook->tools !!}</td>
             </tr>
             <tr>
-                <td>Hasil Kerja</td>
+                <th>Hasil Kerja</th>
                 <td valign="top">{!! $logbook->hasil_kerja !!}</td>
             </tr>
             <tr>
-                <td>Keterangan</td>
+                <th>Keterangan</th>
                 <td valign="top">{!! $logbook->keterangan !!}</td>
             </tr>
         </table>
