@@ -14,7 +14,7 @@
             height: auto;
         }
         table th{
-            width: 200px;
+            width: 150px;
         }
         .page-break {
             page-break-after: always;
@@ -31,10 +31,10 @@
         <table width="100%">
             <tr>
                 <th>JURUSAN</th>
-                <td>:</td>
+                <td align="center">:</td>
                 <td>TEKNIK KOMPUTER DAN INFORMATIKA</td>
                 <th>PROGRAM STUDI</th>
-                <td>:</td>
+                <td align="center">:</td>
                 <td>D4 TEKNIK INFORMATIKA</td>
             </tr>
         </table>

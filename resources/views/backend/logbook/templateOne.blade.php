@@ -15,7 +15,7 @@
         }
 
         table th{
-            width: 200px;
+            width: 150px;
         }
 
         .page-break {
